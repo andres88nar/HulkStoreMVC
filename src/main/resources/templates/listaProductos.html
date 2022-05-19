@@ -1,0 +1,46 @@
+
+<html xmlls:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${modal}"></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>       
+        <h1 th:text="${modal}"></h1>          
+        <div>         
+             <a th:href="@{/easyhome/addcustomer}"><button>Nuevo Producto</button></a> 
+             <a th:href="@{/easyhome/addcustomer}"><button>Ingreso inventario</button></a> 
+             <a th:href="@{/todouno/HulkStore/}"><button>Volver</button></a>
+        </div>                 
+        <p></p>
+        <div th:if="${listProducts!=null and !listProducts.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre</th>                   
+                    <th>Unidad</th>
+                    <th>Cantidad min</th>
+                    <th>Cantidad max</th>
+                    <th>Valor Venta</th>               
+                    <th>Seleccionar</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>  
+                           
+                </tr>  
+                <tr th:each="products ${listProducts}">
+<!--                    <td th:text="${Products.nombre}"></td>
+                    <td th:text="${Products.unidad}"></td>
+                    <td th:text="${Products.min}"></td>
+                    <td th:text="${Products.max}"></td>
+                    <td th:text="${Products.valventa}"></td>
+                <div th:if="${modal == 'Lista de Usuarios' }">
+                     <td> <a th:href="@{/easyhome/editcustomer/} + ${Customer.idcustomer}"  th:text="Editar"></a></td>
+                     <td> <a th:href="@{/easyhome/deletecustomer/} + ${Customer.idcustomer}"  th:text="Eliminar"></a></td>
+                </div>              
+                <div th:if="${modal == 'Seleccionar Cliente' }">
+                    <td> <a th:href="@{/easyhome/deletecustomer/} + ${Customer.idcustomer}"  th:text="Seleccionar"></a></td>
+                </div>                 -->
+                </tr>                
+            </table>           
+        </div>        
+    </body>
+</html>
