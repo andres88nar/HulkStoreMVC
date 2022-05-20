@@ -1,0 +1,37 @@
+
+<html xmlls:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${modal}"></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>       
+        <h1 th:text="${modal}"></h1> 
+        <p></p>
+       <form th:action="@{/todouno/HulkStore/saveproduct}" method="post" th:object="${Producto}">
+          <input type="hidden"  name="idproducto"  th:field="*{idproducto}"
+          <label for="nombre">Nombre Producto :</label>
+          <input type="text" name="nombre" th:field="*{nombre}"></input> 
+          <br><br>
+          <label for="unda">Unidad :</label>
+          <input type="text" name="unda" th:field="*{unidad}"></input>
+          <br><br>
+          <label for="canmin">Cantidad minima :</label>
+          <input type="text" name="canmin" th:field="*{min}"></input>         
+          <br><br>
+          <label for="canmax">Cantidad maxima :</label>
+          <input type="text" name="canmax" th:field="*{max}"></input>            
+          <br><br>
+          <label for="Valorventa">Valor Venta :</label>
+          <input type="text" name="Valorventa" th:field="*{valventa}"></input>
+          <br><br>
+          <div th:if="${modal == 'Resgitro de nuevo producto' }">            
+              <input type="submit" name="guardar" value="Guardar"/> 
+          </div>
+          <div th:if="${modal == 'Edicion de producto' }">            
+              <input type="submit" name="editar" value="Editar"/> 
+          </div>       
+         </form>    
+         <a th:href="@{/todouno/HulkStore/listProducts}"><button>Volver</button></a>        
+    </body>
+</html>

@@ -21,6 +21,21 @@ public class HulkStoreServicesImp implements HulkStoreServices{
     public List<Producto> listaProdcutos() {
         return (List<Producto>) productoRepository.findAll();
     }
+
+    @Override
+    public Producto searchProductById(Producto product) {
+        return productoRepository.findById(product.getIdproducto()).orElse(null);
+    }
+
+    @Override
+    public void addProduct(Producto product) {
+        productoRepository.save(product);
+    }
+
+    @Override
+    public void deletCustomer(Producto product) {
+        productoRepository.delete(product);
+    }
     
     
     
