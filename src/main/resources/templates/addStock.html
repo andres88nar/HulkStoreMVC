@@ -8,17 +8,23 @@
     <body>       
         <h1 th:text="${modal}"></h1> 
         <p></p>
-       <form th:action="@{/todouno/HulkStore/saveproduct}" method="post" th:object="${kardex}">
+       <form th:action="@{/todouno/HulkStore/savestockardex}" method="post" th:object="${kardex}">
              <!--<input type="hidden"  name="idcustomer"  th:field="*{idcustomer}"-->
              <label th:text="'Nombre del producto: '+ ${product.nombre}"></label>
              <br><br>
              <label th:text="'Valor de venta: '+ ${product.valventa} + ' $'">  </label>
              <br><br>
-             <br><br>
-             <br><br>
+             <br><br>             
              <label for="descripcion">Factura de compra :</label>
              <input type="text" name="descripcion" th:field="*{descripcion}"></input>
-           
+             <br><br>    
+             <label for="ValCompra">Valor unitario de compra :</label>
+             <input type="text" name="ValCompra" th:field="*{vunitario}"></input>
+             <br><br>  
+             <label for="cantidad">cantidad :</label>
+             <input type="text" name="cantidad" th:field="*{intCant}"></input>
+             <br><br>
+             <input type="submit" name="guardar" value="Guardar"/>
 <!--           
           <br><br>
           <label for="unda">Unidad :</label>
@@ -34,7 +40,7 @@
           <input type="text" name="Valorventa" th:field="*{valventa}"></input>
           <br><br>
           <div th:if="${modal == 'Resgitro de nuevo producto' }">            
-              <input type="submit" name="guardar" value="Guardar"/> 
+               
           </div>
           <div th:if="${modal == 'Edicion de producto' }">            
               <input type="submit" name="editar" value="Editar"/> 

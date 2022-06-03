@@ -6,6 +6,7 @@
 package com.co.todouno.HulkStore.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Producto.findByMax", query = "SELECT p FROM Producto p WHERE p.max = :max"),
     @NamedQuery(name = "Producto.findByValventa", query = "SELECT p FROM Producto p WHERE p.valventa = :valventa")})
 public class Producto implements Serializable {
+
+    @OneToMany(mappedBy = "idproducto")
+    private Collection<Kardex> kardexCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -140,6 +146,15 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return "Producto{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", provedor=" + provedor + ", unidad=" + unidad + ", min=" + min + ", max=" + max + ", valventa=" + valventa + '}';
+    }
+
+    @XmlTransient
+    public Collection<Kardex> getKardexCollection() {
+        return kardexCollection;
+    }
+
+    public void setKardexCollection(Collection<Kardex> kardexCollection) {
+        this.kardexCollection = kardexCollection;
     }
 
     
